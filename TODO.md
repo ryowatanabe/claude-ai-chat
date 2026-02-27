@@ -2,22 +2,22 @@
 
 ## Phase 1: プロジェクト初期設定
 
-- [ ] Next.js プロジェクト作成
+- [x] Next.js プロジェクト作成
   - `npx create-next-app@latest . --typescript --app --tailwind --eslint --src-dir=false --import-alias="@/*"`
-- [ ] 追加パッケージのインストール
-  - `hono` `hono/vercel`
-  - `@mastra/core` `@mastra/memory` `@ai-sdk/anthropic`
+- [x] 追加パッケージのインストール
+  - `hono` `@hono/node-server`
+  - `@mastra/core` `@ai-sdk/anthropic`
   - `@prisma/client` `prisma`
   - `zod`
-  - `@fontsource/noto-serif-jp`（またはGoogle Fonts経由）
-- [ ] `tsconfig.json` で strict mode が有効になっていることを確認
-- [ ] `.env.local` を作成し、必要な環境変数のキーを記載（値は空でOK）
+  - Noto Serif JP: Next.js組み込みのGoogle Fonts機能を使用
+- [x] `tsconfig.json` で strict mode が有効になっていることを確認
+- [x] `.env.local` を作成し、必要な環境変数のキーを記載（値は空でOK）
   ```
   ANTHROPIC_API_KEY=
   DATABASE_URL=
   MASTRA_LOG_LEVEL=info
   ```
-- [ ] `.gitignore` に `.env.local` が含まれていることを確認
+- [x] `.gitignore` に `.env.local` が含まれていることを確認（`.env*` で対応済み）
 
 ---
 
