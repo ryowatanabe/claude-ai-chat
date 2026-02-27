@@ -23,14 +23,14 @@
 
 ## Phase 2: データベース・Prisma設定
 
-- [ ] Prisma 初期化
-  - `npx prisma init`
-- [ ] `prisma/schema.prisma` にスキーマを定義
-  - `Session` モデル（セッションIDと作成日時のみのシンプルな構成）
-- [ ] Prismaクライアントのシングルトンを実装
+- [x] Prisma 初期化
+  - `npx prisma init` 実行済み（Prisma 7: 設定は `prisma.config.ts` に集約）
+- [x] `prisma/schema.prisma` にスキーマを定義
+  - `Session` モデル（id, createdAt, updatedAt）
+- [x] Prismaクライアントのシングルトンを実装
   - `lib/prisma.ts` を作成し、`PrismaClient` をシングルトンで管理
 - [ ] ローカル開発用DBを用意し、マイグレーションを実行
-  - `npx prisma migrate dev --name init`
+  - `DATABASE_URL` を設定後に `npx prisma migrate dev --name init` を実行すること
 
 ---
 
