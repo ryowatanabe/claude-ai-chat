@@ -29,23 +29,25 @@
   - `Session` モデル（id, createdAt, updatedAt）
 - [x] Prismaクライアントのシングルトンを実装
   - `lib/prisma.ts` を作成し、`PrismaClient` をシングルトンで管理
-- [ ] ローカル開発用DBを用意し、マイグレーションを実行
-  - `DATABASE_URL` を設定後に `npx prisma migrate dev --name init` を実行すること
+- [x] ローカル開発用DBを用意し、マイグレーションを実行
+  - `docker-compose.yml` でPostgreSQL 15コンテナを作成（`docker compose up -d`）
+  - `DATABASE_URL=postgresql://oracle:oracle@localhost:5432/oracle_chat` を `.env.local` に設定済み
+  - `npx prisma migrate dev --name init` 実行済み
 
 ---
 
 ## Phase 3: AIエージェント実装（Mastra）
 
-- [ ] システムプロンプトを定義
+- [x] システムプロンプトを定義
   - `lib/mastra/prompts.ts` を作成
   - 神様キャラクターのプロンプトを文字列定数としてエクスポート
-- [ ] Mastraエージェントを定義
+- [x] Mastraエージェントを定義
   - `lib/mastra/agent.ts` を作成
-  - `oracle-agent` を定義（モデル: `claude-sonnet-4-6`）
-  - Mastraの `memory` でセッション単位の会話履歴管理を設定
-  - `streamText` でストリーミングを有効化
-- [ ] Mastraインスタンスを初期化
+  - `oracle-agent` を定義（モデル: `anthropic/claude-sonnet-4-6`）
+  - セッション単位の会話履歴は `agent.stream()` の `memory.thread` / `memory.resource` で管理
+- [x] Mastraインスタンスを初期化
   - `lib/mastra/index.ts` を作成
+  - `LibSQLStore(url: ":memory:")` でインメモリストレージを設定
   - エージェントを登録してエクスポート
 
 ---
